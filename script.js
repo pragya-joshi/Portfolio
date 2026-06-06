@@ -546,25 +546,25 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       title: "The UI Engineering Lab",
-      body: "Explore real-time frontend simulations. Select a tab in the left sidebar to play with list virtualization FPS, decoupled micro-frontend bundle sizes, Redux state normalization updates, or custom enterprise grid filters.",
+      body: "Explore real-time frontend simulations. Select a tab to play with virtualization, micro-frontends, Redux state, or grid filters.",
       target: ".lab-app-container",
       nextText: "Next"
     },
     {
       title: "Professional Work & Experience",
-      body: "Walk through Pragya's work timeline, showing the frontend scaling challenges she solved at Nomura. Expand on any role card to view the exact challenge, implementation details, and outcomes.",
+      body: "Walk through Pragya's work timeline, showing frontend scaling challenges solved at Nomura.",
       target: "#experience",
       nextText: "Next"
     },
     {
       title: "Technical Skills & Capabilities",
-      body: "Inspect Pragya's technical stack: TypeScript, React.js, Redux, Cypress E2E, Webpack Module Federation, and custom UI components wrapper libraries. These represent the tools she uses to engineer low-latency, responsive frontend applications.",
+      body: "Inspect Pragya's technical stack: TypeScript, React.js, Redux, Webpack Module Federation.",
       target: "#skills",
       nextText: "Next"
     },
     {
       title: "Awards & Recognitions",
-      body: "Pragya's contributions are backed by key recognitions, including the Nomura Shining Star Award (Q3 2024) and leadership in driving React architecture and mentoring junior developers.",
+      body: "Key recognitions, including the Nomura Shining Star Award for React architecture leadership.",
       target: ".awards-container",
       nextText: "Next"
     },
@@ -831,10 +831,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const padding = 10;
 
     // Calculate viewport relative bounds
-    const x = rect.left - padding;
-    const y = rect.top - padding;
-    const w = rect.width + padding * 2;
-    const h = rect.height + padding * 2;
+    let x = rect.left - padding;
+    let y = rect.top - padding;
+    let w = rect.width + padding * 2;
+    let h = rect.height + padding * 2;
+
+    // Prevent cutout from overlapping the sticky header
+    const header = document.getElementById('main-header');
+    if (header) {
+      const headerBottom = header.getBoundingClientRect().bottom;
+      if (y < headerBottom) {
+        const overlap = headerBottom - y;
+        y = headerBottom;
+        h = Math.max(0, h - overlap);
+      }
+    }
 
     cutout.setAttribute('x', x);
     cutout.setAttribute('y', y);
@@ -869,69 +880,90 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardRect = tourCard.getBoundingClientRect();
     const margin = 20;
 
-    // Determine vertical placement based on viewport space
+    // Determine vertical and horizontal placement based on viewport space
+    const header = document.getElementById('main-header');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    
     const spaceBelow = window.innerHeight - rect.bottom;
-    const spaceAbove = rect.top;
+    const spaceAbove = rect.top - headerHeight;
+    const spaceLeft = rect.left;
+    const spaceRight = window.innerWidth - rect.right;
 
-    // Check if the tooltip fits above or below in the viewport
+    // Check if the tooltip fits around the element
     const fitsBelow = spaceBelow > cardRect.height + margin + 12;
     const fitsAbove = spaceAbove > cardRect.height + margin + 12;
+    const fitsLeft = spaceLeft > cardRect.width + margin + 12;
+    const fitsRight = spaceRight > cardRect.width + margin + 12;
 
-    if (!fitsBelow && !fitsAbove) {
-      // Fallback for massive sections (like lab app container or experience timeline)
-      // Display the card as a floating fixed helper widget at the bottom-center of the screen
-      tourCard.style.position = 'fixed';
-      tourCard.classList.remove('arrow-up', 'arrow-down');
-
-      const left = (window.innerWidth / 2) - (cardRect.width / 2);
-      const top = window.innerHeight - cardRect.height - 24;
-
-      tourCard.style.left = `${left}px`;
-      tourCard.style.top = `${top}px`;
-      return;
+    let placement = null;
+    if (fitsBelow) placement = 'bottom';
+    else if (fitsAbove) placement = 'top';
+    else if (fitsRight) placement = 'right';
+    else if (fitsLeft) placement = 'left';
+    else {
+      // Pick the side with the most space to minimize overlap
+      const maxSpace = Math.max(spaceBelow, spaceAbove, spaceLeft, spaceRight);
+      if (maxSpace === spaceBelow) placement = 'bottom';
+      else if (maxSpace === spaceAbove) placement = 'top';
+      else if (maxSpace === spaceRight) placement = 'right';
+      else placement = 'left';
     }
 
     // Set position to absolute for standard target-anchored tooltip steps
     tourCard.style.position = 'absolute';
+    tourCard.classList.remove('arrow-up', 'arrow-down', 'arrow-point-left', 'arrow-point-right');
+    tourCard.style.removeProperty('--arrow-left');
+    tourCard.style.removeProperty('--arrow-top');
 
     // Target absolute coordinates in the page layout context
     const targetPageTop = rect.top + window.scrollY;
     const targetPageBottom = rect.bottom + window.scrollY;
     const targetPageLeft = rect.left + window.scrollX;
+    const targetPageRight = rect.right + window.scrollX;
 
-    // Centering the tour card horizontally on the target
-    let left = targetPageLeft + (rect.width / 2) - (cardRect.width / 2);
-    // Bound horizontally within page width viewport limits
-    const minLeft = window.scrollX + 16;
-    const maxLeft = window.scrollX + window.innerWidth - cardRect.width - 16;
-    left = Math.max(minLeft, Math.min(left, maxLeft));
-
+    let left = 0;
     let top = 0;
-    if (fitsBelow) {
-      // Place below target
+
+    if (placement === 'bottom') {
       top = targetPageBottom + margin;
+      left = targetPageLeft;
       tourCard.classList.add('arrow-up');
-    } else {
-      // Place above target
+    } else if (placement === 'top') {
       top = targetPageTop - cardRect.height - margin;
+      left = targetPageLeft;
       tourCard.classList.add('arrow-down');
+    } else if (placement === 'right') {
+      left = targetPageRight + margin;
+      top = targetPageTop;
+      tourCard.classList.add('arrow-point-left');
+    } else if (placement === 'left') {
+      left = targetPageLeft - cardRect.width - margin;
+      top = targetPageTop;
+      tourCard.classList.add('arrow-point-right');
     }
 
-    // Clamp top to keep card within the viewport bounds (safety net)
-    const minTop = window.scrollY + 16;
-    const maxTop = window.scrollY + window.innerHeight - cardRect.height - 16;
+    // Clamp horizontally to document width so it doesn't get forcefully pushed over the target
+    const minLeft = 16;
+    const maxLeft = document.documentElement.scrollWidth - cardRect.width - 16;
+    left = Math.max(minLeft, Math.min(left, maxLeft));
+
+    // Clamp vertically to document height so it doesn't get forcefully pushed over the target
+    const minTop = headerHeight + 16;
+    const maxTop = document.documentElement.scrollHeight - cardRect.height - 16;
     top = Math.max(minTop, Math.min(top, maxTop));
 
-    // Compute pointer offset
-    const targetCenterX = targetPageLeft + (rect.width / 2);
-    let arrowLeft = targetCenterX - left;
-
-    // Clamp the pointer arrow offset so it never slides over the rounded corners of the card
-    const arrowMin = 24;
-    const arrowMax = cardRect.width - 24;
-    arrowLeft = Math.max(arrowMin, Math.min(arrowLeft, arrowMax));
-
-    tourCard.style.setProperty('--arrow-left', `${arrowLeft}px`);
+    // Compute pointer offset depending on axis
+    if (placement === 'bottom' || placement === 'top') {
+      const targetCenterX = targetPageLeft + (rect.width / 2);
+      let arrowLeft = targetCenterX - left;
+      arrowLeft = Math.max(24, Math.min(arrowLeft, cardRect.width - 24));
+      tourCard.style.setProperty('--arrow-left', `${arrowLeft}px`);
+    } else {
+      const targetCenterY = targetPageTop + (rect.height / 2);
+      let arrowTop = targetCenterY - top;
+      arrowTop = Math.max(24, Math.min(arrowTop, cardRect.height - 24));
+      tourCard.style.setProperty('--arrow-top', `${arrowTop}px`);
+    }
 
     tourCard.style.left = `${left}px`;
     tourCard.style.top = `${top}px`;
@@ -963,13 +995,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (step.target) {
       const el = document.querySelector(step.target);
       if (el) {
-        // Scroll target into view
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         el.classList.add('tour-highlight-focus');
 
-        // Position immediately (so it starts transitioning top/left and cutout SVG shape)
+        // Position immediately using absolute coordinates
         positionTourCard(el);
         updateTourBackdrop(el);
+
+        // Scroll the tooltip itself into view to guarantee visibility even if the target is huge
+        tourCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
         // If target is the theme selector, trigger visual simulation cycling
         if (step.target === "#palette-picker") {
