@@ -26,6 +26,8 @@ jobs:
 
       - name: Build Project
         run: npm run build
+        env:
+          VITE_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
