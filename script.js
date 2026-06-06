@@ -1092,6 +1092,7 @@ document.addEventListener('DOMContentLoaded', () => {
           formStatus.textContent = 'Simulation: Message sent successfully! (Set VITE_WEB3FORMS_KEY in your .env or GitHub Secrets to receive real emails).';
           formStatus.className = 'form-status success';
           contactForm.reset();
+          
 
           setTimeout(() => {
             formStatus.className = 'form-status';
