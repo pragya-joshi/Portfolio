@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pragya Joshi | Premium UI Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Pragya Joshi, Associate Software Engineer at Nomura. Specializing in high-performance frontend architectures, React, TypeScript, micro-frontends, and UI rendering optimizations.">
+  
+  <!-- Modern Typography (Outfit for Headings, Inter for Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Premium Styling -->
+  <script type="module" crossorigin src="./assets/index-9pKdAPH7.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-aNDVHhWL.css">
+</head>
+<body class="theme-sage">
+
+  <!-- SVG Sprite for Icons -->
+  <svg style="display: none;">
+    <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+      <circle cx="4" cy="4" r="2"/>
+    </symbol>
+    <symbol id="icon-email" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </symbol>
+    <symbol id="icon-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </symbol>
+    <symbol id="icon-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+      <rect x="9" y="9" width="6" height="6"/>
+      <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+      <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+      <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/>
+      <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/>
+    </symbol>
+    <symbol id="icon-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="16" y="16" width="6" height="6" rx="1"/>
+      <rect x="2" y="16" width="6" height="6" rx="1"/>
+      <rect x="9" y="2" width="6" height="6" rx="1"/>
+      <path d="M12 8v8M5 16v-4h14v4"/>
+    </symbol>
+    <symbol id="icon-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <ellipse cx="12" cy="5" rx="9" ry="3"/>
+      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+      <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
+    </symbol>
+    <symbol id="icon-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="3" width="7" height="7"/>
+      <rect x="14" y="3" width="7" height="7"/>
+      <rect x="14" y="14" width="7" height="7"/>
+      <rect x="3" y="14" width="7" height="7"/>
+    </symbol>
+  </svg>
+
+  <!-- Sticky Header -->
+  <header id="main-header" class="header">
+    <div class="header-container">
+      <div class="logo">
+        <span class="logo-name">Pragya Joshi</span>
+        <span class="logo-title">UI Engineer & Architect</span>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#ui-lab" class="nav-link">UI Lab</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Skills</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Palette Selector -->
+        <div class="palette-picker" id="palette-picker">
+          <button class="palette-btn" title="Choose color tone" aria-label="Select Palette">
+            <span class="color-dot current-color"></span>
+            <span class="palette-label">Sage</span>
+          </button>
+          <div class="palette-dropdown" id="palette-dropdown">
+            <button class="dropdown-item active" data-theme="theme-sage" style="--accent-preview: #5f7055;">
+              <span class="color-dot" style="background: #5f7055;"></span> Sage Green
+            </button>
+            <button class="dropdown-item" data-theme="theme-terracotta" style="--accent-preview: #c67a5c;">
+              <span class="color-dot" style="background: #c67a5c;"></span> Terracotta
+            </button>
+            <button class="dropdown-item" data-theme="theme-ocean" style="--accent-preview: #5b7282;">
+              <span class="color-dot" style="background: #5b7282;"></span> Ocean Slate
+            </button>
+            <button class="dropdown-item" data-theme="theme-oatmeal" style="--accent-preview: #8c8070;">
+              <span class="color-dot" style="background: #8c8070;"></span> Warm Oatmeal
+            </button>
+          </div>
+        </div>
+
+        <!-- Tour Button -->
+        <button class="btn btn-secondary btn-sm" id="btn-start-tour" style="padding: 6px 12px; font-size: 0.82rem;">Guide Tour</button>
+
+        <a href="Pragya_Joshi CV.pdf" download class="btn btn-secondary btn-icon" id="download-cv-btn" style="padding: 6px 12px; font-size: 0.82rem; display: inline-flex;">
+          <svg class="icon"><use href="#icon-download"/></svg>
+          <span>Resume</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / About Section -->
+    <section id="about" class="hero-section">
+      <div class="section-container hero-container">
+        <div class="hero-content">
+          <div class="badge-container">
+            <span class="hero-badge">Nomura • Associate Software Engineer</span>
+          </div>
+          <h1 class="hero-headline">
+            I build user interfaces that scale to millions of rows, and bundles that deploy in seconds.
+          </h1>
+          <p class="hero-paragraph">
+            I am a UI-focused software engineer specialized in React, TypeScript, and high-performance frontend architectures. 
+            By bridging the gap between design engineering and system performance, I help teams build robust frontend ecosystems 
+            without compromising on speed, user responsiveness, or code maintainability.
+          </p>
+          
+          <div class="quick-stats-grid">
+            <div class="stat-card" onclick="document.querySelector('[data-tab=virtualization]').click(); document.getElementById('ui-lab').scrollIntoView({behavior: 'smooth'});">
+              <span class="stat-value">60%</span>
+              <span class="stat-label">Initial Load Time Reduction</span>
+              <span class="stat-detail">Achieved via Virtualized List rendering</span>
+            </div>
+            <div class="stat-card" onclick="document.querySelector('[data-tab=mfe]').click(); document.getElementById('ui-lab').scrollIntoView({behavior: 'smooth'});">
+              <span class="stat-value">30%</span>
+              <span class="stat-label">Main Bundle Size Decreased</span>
+              <span class="stat-detail">Using Webpack Module Federation</span>
+            </div>
+            <div class="stat-card" onclick="document.querySelector('[data-tab=redux]').click(); document.getElementById('ui-lab').scrollIntoView({behavior: 'smooth'});">
+              <span class="stat-value">35%</span>
+              <span class="stat-label">UI Interactivity Boost</span>
+              <span class="stat-detail">Redux Normalized State optimization</span>
+            </div>
+          </div>
+
+          <div class="hero-actions-group">
+            <a href="#ui-lab" class="btn btn-primary">Explore the UI Lab</a>
+            <a href="mailto:pragyajoshi534@gmail.com" class="btn btn-tertiary">
+              <svg class="icon"><use href="#icon-email"/></svg>
+              <span>Get in touch</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="organic-frame">
+            <div class="code-art-header">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+              <span class="code-title">performance_audit.ts</span>
+            </div>
+            <pre class="code-art-body"><code><span class="c-key">const</span> audit = {
+  virtualization: <span class="c-val">"60% load reduction"</span>,
+  stateLatency: <span class="c-val">"-45% API latency"</span>,
+  codeCoverage: <span class="c-val">"70% automated tests"</span>,
+  architecture: <span class="c-val">"Micro-Frontend (Module Fed)"</span>,
+  uiFramework: <span class="c-val">"Custom AG-Grid / MUI abstraction"</span>,
+  award: <span class="c-val">"Shining Star Award (Q3 2024)"</span>
+};
+
+<span class="c-comment">// Rendering 10k+ rows at 60 FPS...</span>
+renderVirtualList(audit);</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The UI Lab Section -->
+    <section id="ui-lab" class="ui-lab-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">Live Demos & Sandboxes</span>
+          <h2 class="section-title">The UI Engineering Lab</h2>
+          <p class="section-desc">
+            Instead of just writing about frontend performance, I built these interactive simulations to let you experience the difference first-hand. Toggle the features to inspect execution speeds and metrics.
+          </p>
+        </div>
+
+        <!-- Lab App Container -->
+        <div class="lab-app-container">
+          <!-- Tab Controls -->
+          <div class="lab-tabs">
+          <button class="lab-tab active" data-tab="virtualization">
+            <svg class="tab-icon"><use href="#icon-cpu"/></svg>
+            <span>List Virtualization</span>
+          </button>
+          <button class="lab-tab" data-tab="mfe">
+            <svg class="tab-icon"><use href="#icon-network"/></svg>
+            <span>Micro-Frontend Federation</span>
+          </button>
+          <button class="lab-tab" data-tab="redux">
+            <svg class="tab-icon"><use href="#icon-database"/></svg>
+            <span>State Normalization</span>
+          </button>
+          <button class="lab-tab" data-tab="grid">
+            <svg class="tab-icon"><use href="#icon-grid"/></svg>
+            <span>Enterprise Grid Configurator</span>
+          </button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="lab-viewport">
+          
+          <!-- Tab 1: Virtualization -->
+          <div class="lab-content active" id="lab-virtualization">
+            <div class="lab-grid-layout">
+              <div class="lab-description">
+                <h3>Rendering 10,000+ Items at 60 FPS</h3>
+                <p>
+                  Rendering thousands of rich DOM nodes causes significant browser reflow lag, skyrocketing memory usage, and UI stutter. By utilizing virtual scrolling, we only render items currently visible in the viewport plus a small buffer.
+                </p>
+                <p class="human-touch-note">
+                  <strong>The Human Touch:</strong> This optimization meant financial analysts at Nomura could scroll through large data sheets instantly without browser crashes, directly improving their daily trading efficiency.
+                </p>
+                
+                <div class="control-box">
+                  <label class="control-label">Rendering Mode</label>
+                  <div class="toggle-group">
+                    <button class="toggle-btn active" id="btn-virtualized-on">Virtualized (60 FPS)</button>
+                    <button class="toggle-btn" id="btn-virtualized-off">Standard Render (Laggy)</button>
+                  </div>
+                </div>
+
+                <div class="metrics-panel">
+                  <div class="metric">
+                    <span class="m-val" id="metric-fps">60 FPS</span>
+                    <span class="m-lbl">Scroll Frame Rate</span>
+                  </div>
+                  <div class="metric">
+                    <span class="m-val" id="metric-nodes">35</span>
+                    <span class="m-lbl">DOM Nodes Rendered</span>
+                  </div>
+                  <div class="metric">
+                    <span class="m-val" id="metric-memory">1.2 MB</span>
+                    <span class="m-lbl">Estimated Heap Size</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lab-playground">
+                <div class="virtual-list-header">
+                  <span>Transaction ID</span>
+                  <span>Timestamp</span>
+                  <span>Amount (USD)</span>
+                  <span>Status</span>
+                </div>
+                <div class="virtual-list-container" id="virtual-list-container">
+                  <div class="virtual-list-scroller" id="virtual-list-scroller">
+                    <!-- Dynamic items will render here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Micro-Frontend Federation -->
+          <div class="lab-content" id="lab-mfe">
+            <div class="lab-grid-layout">
+              <div class="lab-description">
+                <h3>Decoupled Module Federation</h3>
+                <p>
+                  Using Webpack Module Federation, we split a large monolithic financial portal into 5 independent micro-frontends. These load dynamically at runtime, sharing a single instance of react/redux vendors to save bandwidth.
+                </p>
+                <p class="human-touch-note">
+                  <strong>The Human Touch:</strong> Before this, a bug in the settings page could crash the whole app. Now, modules are isolated, meaning risk analysts can keep trading even if settings go down, while developers deploy updates independently.
+                </p>
+
+                <div class="mfe-controls">
+                  <h4>Toggle Remote Modules:</h4>
+                  <div class="mfe-checkboxes">
+                    <label class="mfe-checkbox-label">
+                      <input type="checkbox" id="mfe-chk-trading" checked>
+                      <span>Trading Dashboard (+220KB)</span>
+                    </label>
+                    <label class="mfe-checkbox-label">
+                      <input type="checkbox" id="mfe-chk-ledger" checked>
+                      <span>Account Ledger (+180KB)</span>
+                    </label>
+                    <label class="mfe-checkbox-label">
+                      <input type="checkbox" id="mfe-chk-risk">
+                      <span>Risk Analytics (+340KB)</span>
+                    </label>
+                    <label class="mfe-checkbox-label">
+                      <input type="checkbox" id="mfe-chk-audit">
+                      <span>Audit Logs (+110KB)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="metrics-panel">
+                  <div class="metric">
+                    <span class="m-val" id="mfe-bundle-size">520 KB</span>
+                    <span class="m-lbl">Shared Main Bundle Size</span>
+                  </div>
+                  <div class="metric">
+                    <span class="m-val" id="mfe-shared-libs">3/3</span>
+                    <span class="m-lbl">Shared Dependencies Cached</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lab-playground mfe-visualizer">
+                <div class="mfe-shell-container">
+                  <div class="mfe-node host">
+                    <span class="mfe-node-title">Shell (Host Container)</span>
+                    <span class="mfe-node-status">Active • 120 KB</span>
+                  </div>
+                  
+                  <div class="mfe-connections">
+                    <!-- Visual connecting lines -->
+                    <div class="connection-line active" id="line-trading"></div>
+                    <div class="connection-line active" id="line-ledger"></div>
+                    <div class="connection-line" id="line-risk"></div>
+                    <div class="connection-line" id="line-audit"></div>
+                  </div>
+
+                  <div class="mfe-remotes-grid">
+                    <div class="mfe-node remote active" id="node-trading">
+                      <span>Trading Dashboard</span>
+                      <span class="status-tag">Connected</span>
+                    </div>
+                    <div class="mfe-node remote active" id="node-ledger">
+                      <span>Account Ledger</span>
+                      <span class="status-tag">Connected</span>
+                    </div>
+                    <div class="mfe-node remote" id="node-risk">
+                      <span>Risk Analytics</span>
+                      <span class="status-tag">Disconnected</span>
+                    </div>
+                    <div class="mfe-node remote" id="node-audit">
+                      <span>Audit Logs</span>
+                      <span class="status-tag">Disconnected</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: State Normalization -->
+          <div class="lab-content" id="lab-redux">
+            <div class="lab-grid-layout">
+              <div class="lab-description">
+                <h3>Redux Normalization Inspector</h3>
+                <p>
+                  Deeply nested API responses lead to complicated component mappings and redundant UI updates. Normalizing state into relational tables allows components to subscribe *only* to the specific IDs they render.
+                </p>
+                <p class="human-touch-note">
+                  <strong>The Human Touch:</strong> This prevents UI micro-stutters during rapid trading tick updates, ensuring the price numbers on screen match reality instantly, preventing trade execution errors.
+                </p>
+
+                <div class="state-controls">
+                  <h4>Click to Update Transaction:</h4>
+                  <button class="btn btn-secondary btn-sm" id="btn-update-price">Update Price (ID: txn_101)</button>
+                  <p class="sim-caption" id="sim-status-message">Click the button to simulate a real-time state update</p>
+                </div>
+
+                <div class="metrics-panel">
+                  <div class="metric">
+                    <span class="m-val" id="metric-redux-renders">0</span>
+                    <span class="m-lbl">Simulated UI Re-renders</span>
+                  </div>
+                  <div class="metric text-highlight">
+                    <span class="m-val" id="metric-redux-savings">93%</span>
+                    <span class="m-lbl">Wasted Render Reduction</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lab-playground state-inspector-playground">
+                <div class="inspector-column">
+                  <div class="inspector-header">Nested State Update (Subscribes to whole list)</div>
+                  <div class="inspector-json-card render-blink-all" id="json-nested">
+                    <!-- Rendered nested visual structure -->
+                  </div>
+                </div>
+                <div class="inspector-column">
+                  <div class="inspector-header">Normalized State (Subscribes to single txn ID)</div>
+                  <div class="inspector-json-card" id="json-normalized">
+                    <!-- Rendered normalized visual structure -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: AG-Grid Playground -->
+          <div class="lab-content" id="lab-grid">
+            <div class="lab-grid-layout">
+              <div class="lab-description">
+                <h3>Custom Grid & Data Abstraction</h3>
+                <p>
+                  Enterprise applications rely heavily on high-density spreadsheets. I built wrapper abstractions around AG Grid and Material UI to standardize 50+ screens, boosting development speed by 30% across teams.
+                </p>
+                <div class="grid-controls">
+                  <input type="text" id="grid-search" placeholder="Quick search transactions..." class="form-input">
+                  <div class="grid-filters">
+                    <button class="chip active" data-filter="all">All Status</button>
+                    <button class="chip" data-filter="Succeeded">Succeeded</button>
+                    <button class="chip" data-filter="Pending">Pending</button>
+                    <button class="chip" data-filter="Failed">Failed</button>
+                  </div>
+                </div>
+                <div class="metrics-panel">
+                  <div class="metric">
+                    <span class="m-val" id="grid-row-count">1,000</span>
+                    <span class="m-lbl">Local Rows Filtered</span>
+                  </div>
+                  <div class="metric">
+                    <span class="m-val">&lt; 1ms</span>
+                    <span class="m-lbl">Reflow Performance</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lab-playground grid-playground">
+                <div class="custom-datagrid">
+                  <table class="datagrid-table" id="data-table">
+                    <thead>
+                      <tr>
+                        <th data-sort="id">ID <span class="sort-icon"></span></th>
+                        <th data-sort="entity">Entity <span class="sort-icon"></span></th>
+                        <th data-sort="amount" class="text-right">Amount (USD) <span class="sort-icon"></span></th>
+                        <th data-sort="status">Status <span class="sort-icon"></span></th>
+                      </tr>
+                    </thead>
+                    <tbody id="grid-tbody">
+                      <!-- Dynamic rows will render here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Professional Timeline Section -->
+    <section id="experience" class="timeline-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">My Professional Narrative</span>
+          <h2 class="section-title">Experience & Journey</h2>
+          <p class="section-desc">
+            A chronological look at my roles, showing the engineering challenges I inherited, the solutions I created, and the direct organizational impact.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          
+          <!-- Node 1: Nomura ASE -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-meta">
+                  <span class="timeline-company">Nomura Research Institute FT</span>
+                  <span class="timeline-period">Aug 2023 – Present</span>
+                </div>
+                <h3 class="timeline-role">Associate Software Engineer</h3>
+                <span class="timeline-location"><svg class="icon-inline"><use href="#icon-map"/></svg> Kolkata, India</span>
+              </div>
+              
+              <div class="timeline-details">
+                <p>
+                  Promoted to take charge of core frontend performance and system scaling. Leading architectural choices for micro-frontend infrastructure and optimization.
+                </p>
+                <div class="timeline-highlights">
+                  <div class="highlight-block">
+                    <span class="block-title">The Challenge</span>
+                    <p>A monolith trading platform experiencing heavy bundle inflation (slow downloads over remote networks) and severe scroll lag during volatile market hours with high data density.</p>
+                  </div>
+                  <div class="highlight-block">
+                    <span class="block-title">The Solution</span>
+                    <p>Decoupled the core code into 5 dynamic micro-frontends with Webpack Module Federation. Implemented virtual scrolling calculations (`react-window`) and normalized complex nested state schemas in Redux.</p>
+                  </div>
+                  <div class="highlight-block accent">
+                    <span class="block-title">The Impact</span>
+                    <p>Reduced main bundle size by 30%. Achieved a locked 60 FPS scrolling for 10,000+ data cards. Cut development iteration cycles by 30% via custom standardized Material UI & AG Grid wrapper frameworks.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 2: Nomura Intern -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-meta">
+                  <span class="timeline-company">Nomura Research Institute FT</span>
+                  <span class="timeline-period">Jan 2023 – Jul 2023</span>
+                </div>
+                <h3 class="timeline-role">Associate Software Developer Intern</h3>
+                <span class="timeline-location"><svg class="icon-inline"><use href="#icon-map"/></svg> Kolkata, India</span>
+              </div>
+              
+              <div class="timeline-details">
+                <p>
+                  Hired to optimize API latency and design secure, fast-loading internal systems.
+                </p>
+                <div class="timeline-highlights">
+                  <div class="highlight-block">
+                    <span class="block-title">The Challenge</span>
+                    <p>High API latency during application startup, creating a poor developer and employee portal experience with prolonged loading screens.</p>
+                  </div>
+                  <div class="highlight-block">
+                    <span class="block-title">The Solution</span>
+                    <p>Designed state hydration strategies including smart local caching mechanisms. Developed and shipped a reusable React internal portal structure from scratch.</p>
+                  </div>
+                  <div class="highlight-block accent">
+                    <span class="block-title">The Impact</span>
+                    <p>Decreased API startup latency by 45%. Scaled the employee portal to support over 200 daily employees with robust caching. Established unit and Cypress testing standards increasing coverage to 70%.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 3: Education -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-meta">
+                  <span class="timeline-company">St. Thomas’ College of Engineering</span>
+                  <span class="timeline-period">Class of 2023</span>
+                </div>
+                <h3 class="timeline-role">Bachelor of Engineering in IT</h3>
+                <span class="timeline-location"><svg class="icon-inline"><use href="#icon-map"/></svg> Kolkata, India</span>
+              </div>
+              <div class="timeline-details">
+                <p>Focused on Data Structures, Algorithms, Software Engineering principles, and Advanced Web Engineering.</p>
+                <p class="timeline-academic-gpa">Academic Record: <strong>GPA 9.52 / 10.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Grid Section -->
+    <section id="skills" class="skills-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">Technical Capability</span>
+          <h2 class="section-title">Skills & Tooling</h2>
+          <p class="section-desc">
+            A comprehensive overview of the libraries, frameworks, and engineering methodologies I specialize in.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <div class="skill-card">
+            <h4>Core Tech & Core Languages</h4>
+            <ul class="skill-list">
+              <li>TypeScript</li>
+              <li>JavaScript (ES6+)</li>
+              <li>React.js</li>
+              <li>Redux / State Management</li>
+              <li>Java</li>
+              <li>HTML5 & CSS3</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h4>Testing & Infrastructure</h4>
+            <ul class="skill-list">
+              <li>Cypress (E2E Testing)</li>
+              <li>Jest (Unit Testing)</li>
+              <li>Jenkins CI/CD Pipelines</li>
+              <li>Webpack Module Federation</li>
+              <li>Git Version Control</li>
+              <li>Vite</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h4>UI, Tooling & Design Systems</h4>
+            <ul class="skill-list">
+              <li>AG Grid (High Density Tables)</li>
+              <li>Material UI (MUI)</li>
+              <li>Styled Components</li>
+              <li>Storybook (Component Isolation)</li>
+              <li>Figma UI/UX Design</li>
+              <li>CSS Grid / Flexbox Layouts</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h4>Architectural Principles</h4>
+            <ul class="skill-list">
+              <li>SOLID Design Principles</li>
+              <li>Design Patterns</li>
+              <li>Object Oriented Programming</li>
+              <li>Data Structures & Algorithms</li>
+              <li>RESTful API Design</li>
+              <li>Micro-Frontend Architecture</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Awards & Recognition -->
+        <div class="awards-container">
+          <div class="award-header">
+            <svg class="award-icon"><use href="#icon-star"/></svg>
+            <h3>Awards & Leadership Highlight</h3>
+          </div>
+          <div class="awards-grid">
+            <div class="award-card">
+              <span class="award-tag">Nomura Award</span>
+              <h5>Shining Star Award (Q3 2024)</h5>
+              <p>Awarded for excellence in improving frontend scalability, performance, and cross-team standard UI library components.</p>
+            </div>
+            <div class="award-card">
+              <span class="award-tag">Leadership</span>
+              <h5>React Architecture Mentoring</h5>
+              <p>Actively mentored junior developers on component decoupling, Cypress test-driven design, and Redux patterns.</p>
+            </div>
+            <div class="award-card">
+              <span class="award-tag">General</span>
+              <h5>LeetCode & Problem Solving</h5>
+              <p>Active LeetCode solver with a focus on core Data Structures and Algorithms optimization.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer / Contact -->
+  <footer class="footer">
+    <div class="section-container footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Let's build something exceptional.</h3>
+          <p>Currently engineering systems in Kolkata, India. Open to discussing design systems, React performance, or micro-frontends.</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg class="icon"><use href="#icon-email"/></svg>
+              <a href="mailto:pragyajoshi534@gmail.com">pragyajoshi534@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon"><use href="#icon-linkedin"/></svg>
+              <a href="https://linkedin.com/in/pragya-joshi" target="_blank" rel="noopener">linkedin.com/in/pragya-joshi</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-contact-form">
+          <h4>Send a Message</h4>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="your.email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" class="form-input" rows="4" placeholder="How can Pragya help you?" required style="resize: vertical; min-height: 100px;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">Send Message</button>
+            <div class="form-status" id="form-status"></div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pragya Joshi. Designed and coded with organic design tokens and performance-centric layouts.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Javascript -->
+</body>
+</html>
